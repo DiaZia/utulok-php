@@ -28,7 +28,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a href="o_nas.html" class="mainButtons">O nás</a>
+                    <li class="nav-item"><a href="pets.view.php" class="mainButtons">O nás</a>
                     <li class="nav-item"><a href="nase_zvieratka.html" class="mainButtons">Naše zvieratká</a></li>
                     <li class="nav-item"><a href="#" class="mainButtons">Podporte nás</a></li>
                 </ul>
@@ -39,10 +39,8 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid mt-3">
-    <div class="web-content">
-        <?= $contentHTML ?>
-    </div>
-</div>
+<footer>
+    <p>&copy; 2023 Diana Žiaková - Semestrálna práca z predmetu VAII</p>
+</footer>
 </body>
 </html>
