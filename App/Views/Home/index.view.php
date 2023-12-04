@@ -1,4 +1,3 @@
-<div id="navigation"></div>
 <main class="mainDiv">
     <div class="row">
         <div class="content col-sm-10 col-md-10">
@@ -56,4 +55,3 @@
         </aside>
     </div>
 </main>
-<div id="footer"></div>

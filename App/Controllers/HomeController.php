@@ -39,4 +39,22 @@ class HomeController extends AControllerBase
     {
         return $this->html();
     }
+
+    /**
+     * Pets home page.
+     * @return \App\Core\Responses\ViewResponse
+     */
+    public function pets(): Response
+    {
+        return $this->html();
+    }
+
+    /**
+     * Abou us page.
+     * @return \App\Core\Responses\ViewResponse
+     */
+    public function about_us(): Response
+    {
+        return $this->html();
+    }
 }
