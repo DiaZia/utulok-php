@@ -21,15 +21,15 @@
 <body>
 <nav class="navbar navbar-expand-lg">
     <div class="row header">
-        <div class="col-6 col-sm-6 col-md-6 col-lg-4"><a class="title" href='<?= \App\Config\Configuration::INDEX_URL ?>'">Útulok Pacička</a></div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-4"><a class="title" href='<?= $link->url("home.index") ?>'">Útulok Pacička</a></div>
         <div class="col-4 col-sm-4 col-md-4 col-lg-7">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a href="<?= \App\Config\Configuration::ABOUTUS_URL ?>" class="mainButtons">O nás</a>
-                    <li class="nav-item"><a href="<?= \App\Config\Configuration::PETS_URL ?>" class="mainButtons">Naše zvieratká</a></li>
+                    <li class="nav-item"><a href="<?= $link->url("home.aboutUs") ?>" class="mainButtons">O nás</a>
+                    <li class="nav-item"><a href="<?= $link->url("home.pets") ?>" class="mainButtons">Naše zvieratká</a></li>
                     <li class="nav-item"><a href="#" class="mainButtons">Podporte nás</a></li>
                 </ul>
             </div>

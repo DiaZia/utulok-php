@@ -53,7 +53,7 @@ class HomeController extends AControllerBase
      * Abou us page.
      * @return \App\Core\Responses\ViewResponse
      */
-    public function about_us(): Response
+    public function aboutUs(): Response
     {
         return $this->html();
     }
