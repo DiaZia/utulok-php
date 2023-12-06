@@ -33,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function isUsernameTaken($username, $db) {
+function isUsernameTaken($username, $db)
+{
     $sql = "SELECT * FROM users WHERE username = :username";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':username', $username);
@@ -41,7 +42,8 @@ function isUsernameTaken($username, $db) {
     return $stmt->fetch() !== false;
 }
 
-function isEmailTaken($email, $db) {
+function isEmailTaken($email, $db)
+{
     $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':email', $email);
@@ -57,7 +59,8 @@ function isEmailTaken($email, $db) {
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h2 class="registration login">Registrácia</h2>
-                    <form class=loginForm id="registrationForm" method="post" action="<?= $link->url("register") ?>" onsubmit="return validateRegistrationForm()">
+                    <form class=loginForm id="registrationForm" method="post"
+                          action="<?= $link->url("register") ?>" onsubmit="return validateRegistrationForm()">
                         <label for="meno">Registračné meno:</label>
                         <input type="text" id="meno" name="meno" required><br><br>
 
@@ -71,7 +74,7 @@ function isEmailTaken($email, $db) {
                         <input type="password" id="potvrdit_heslo" name="potvrdit_heslo" required><br><br>
 
                         <input type="submit" value="Registrovať">
-                        <?php if (isset($error)): ?>
+                        <?php if (isset($error)) : ?>
                             <p class="error"><?= $error ?></p>
                         <?php endif; ?>
                     </form>

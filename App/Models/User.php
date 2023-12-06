@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 class User
 {
     protected ?int $id = null;
@@ -56,5 +58,4 @@ class User
     {
         $this->password = $password;
     }
-
 }

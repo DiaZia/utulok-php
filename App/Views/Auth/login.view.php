@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h2 class="login">Prihlásenie</h2>
-                    <form class="loginForm" method="post" action="<?= $link->url("login") ?>" onsubmit="return validateForm()">
+                    <form class="loginForm" method="post" action="<?= $link->url("login") ?>"
+                          onsubmit="return validateForm()">
                         <label for="prihlasovacie_meno">Prihlasovacie meno:</label>
                         <input type="text" id="prihlasovacie_meno" name="prihlasovacie_meno" required><br><br>
 
@@ -47,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php endif; ?>
                     </form>
                     <div class="newAccount">
-                        <a href="<?= $link->url("auth.register") ?>">Ešte nemáte účet? <strong>Vytvorte si ho.</strong></a>
+                        <a href="<?= $link->url("auth.register") ?>">Ešte nemáte účet?
+                            <strong>Vytvorte si ho.</strong></a>
                     </div>
 
                 </div>

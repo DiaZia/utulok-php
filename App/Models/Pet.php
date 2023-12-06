@@ -35,7 +35,7 @@ class Pet extends Model
         $this->type = $type;
     }
 
-     public function getAge(int $age): ?int
+    public function getAge(int $age): ?int
      {
          return $this->age;
      }
@@ -44,5 +44,4 @@ class Pet extends Model
     {
         $this->age = $age;
     }
-
 }
