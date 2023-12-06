@@ -32,19 +32,9 @@ class Configuration
     public const LOGIN_URL = '?c=auth&a=login';
 
     /**
-     * URL where pets page is.
-     */
-    public const PETS_URL = '?c=home&a=pets';
-
-    /**
      * URL where main page is.
      */
     public const INDEX_URL = '?c=home&a=index';
-
-    /**
-     * URL where about us page is.
-     */
-    public const ABOUTUS_URL = '?c=home&a=about_us';
 
     /**
      * Prefix of default view in App/Views dir. <ROOT_LAYOUT>.layout.view.php

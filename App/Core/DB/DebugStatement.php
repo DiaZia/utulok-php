@@ -2,6 +2,7 @@
 
 namespace App\Core\DB;
 
+use PDO;
 use PDOStatement as PDOStatementAlias;
 
 /**
@@ -34,6 +35,11 @@ class DebugStatement
         $this->stmt->debugDumpParams();
         Connection::appendQueryLog(ob_get_clean());
         return $result;
+    }
+
+    public function fetch($fetchStyle = PDO::FETCH_ASSOC)
+    {
+        return $this->stmt->fetch($fetchStyle);
     }
 
     /**

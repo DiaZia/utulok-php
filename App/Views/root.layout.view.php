@@ -35,7 +35,22 @@
             </div>
         </div>
         <div class="col-2 col-sm-2 col-md-2 col-lg-1">
-            <img src="public/images/login.jpg" alt="login" class="loginPic" onclick="window.location.href='<?= \App\Config\Configuration::LOGIN_URL ?>'">
+            <?php if ($auth->isLogged()) { ?>
+                <span class="navbar-text">Prihlásený používateľ: <b><?= $auth->getLoggedUserName() ?></b></span>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= $link->url("auth.logout") ?>">Odhlásenie</a>
+                    </li>
+                </ul>
+            <?php } else { ?>
+                <img src="public/images/login.jpg" alt="login" class="loginPic" onclick="window.location.href='<?= \App\Config\Configuration::LOGIN_URL ?>'">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a>
+                    </li>
+                </ul>
+            <?php } ?>
+
         </div>
     </div>
 </nav>

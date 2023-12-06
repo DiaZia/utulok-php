@@ -50,7 +50,7 @@ class HomeController extends AControllerBase
     }
 
     /**
-     * Abou us page.
+     * About us page.
      * @return \App\Core\Responses\ViewResponse
      */
     public function aboutUs(): Response
