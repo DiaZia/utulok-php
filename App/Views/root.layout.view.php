@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a href="<?= $link->url("home.aboutUs") ?>" class="mainButtons">O nás</a>
-                    <li class="nav-item"><a href="<?= $link->url("home.pets") ?>" class="mainButtons">Naše zvieratká</a></li>
+                    <li class="nav-item"><a href="<?= $link->url("pet.index") ?>" class="mainButtons">Naše zvieratká</a></li>
                     <li class="nav-item"><a href="#" class="mainButtons">Podporte nás</a></li>
                 </ul>
             </div>

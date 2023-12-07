@@ -1,5 +1,5 @@
 <main>
-    <div class="information">
+    <div class="information" id="animatedText">
         <strong>História našeho útulku:</strong>
         Naša história siaha do roku 2005. Od tej doby sme neprestajne rozširovali našu činnosť, aby sme dokázali poskytovať pomoc a starostlivosť zvieratám v
         núdzi. Naša skupina začala ako malý tím dobrovoľníkov, ktorí sa rozhodli venovať svoj čas a úsilie zachraňovaniu opustených a zranených zvierat.
@@ -16,13 +16,13 @@
         Nezabudnite sa pozrieť na naše adopčné programy, dozvedieť sa viac o našich aktivitách a prispievať, aby sme mohli pokračovať v našej dôležitej práci na ochrane a záchrane zvierat.
     </div>
     <div class="row info">
-        <div class="col-md-4">
+        <div class="col-md-4 stat" onmouseover="changeColor(this)">
             <p>18 rokov fungovania</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 stat" onmouseover="changeColor(this)">
             <p>1300+ adoptovaných psov</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 stat" onmouseover="changeColor(this)">
             <p>500+ psov vrátených majiteľom</p>
         </div>
     </div>

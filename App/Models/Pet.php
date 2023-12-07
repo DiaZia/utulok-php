@@ -9,7 +9,22 @@ class Pet extends Model
     protected ?int $id = null;
     protected ?string $name;
     protected ?string $type;
+    protected ?string $imagePath;
     protected ?int $age;
+
+    /**
+     * @param $name
+     * @param $type
+     * @param $imagePath
+     * @param $age
+     */
+    public function __construct($name, $type, $imagePath, $age)
+    {
+        $this->name = $name;
+        $this->type = $type;
+        $this->imagePath = $imagePath;
+        $this->age = $age;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -25,7 +40,7 @@ class Pet extends Model
         $this->name = $name;
     }
 
-    public function getType(string $type): ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -35,7 +50,16 @@ class Pet extends Model
         $this->type = $type;
     }
 
-    public function getAge(int $age): ?int
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(string $path): void
+    {
+        $this->imagePath = $path;
+    }
+    public function getAge(): ?int
      {
          return $this->age;
      }
