@@ -32,15 +32,6 @@ class HomeController extends AControllerBase
     }
 
     /**
-     * Example of an action accessible without authorization
-     * @return \App\Core\Responses\ViewResponse
-     */
-    public function contact(): Response
-    {
-        return $this->html();
-    }
-
-    /**
      * Pets home page.
      * @return \App\Core\Responses\ViewResponse
      */
@@ -54,6 +45,15 @@ class HomeController extends AControllerBase
      * @return \App\Core\Responses\ViewResponse
      */
     public function aboutUs(): Response
+    {
+        return $this->html();
+    }
+
+    /**
+     * Support us page.
+     * @return \App\Core\Responses\ViewResponse
+     */
+    public function support(): Response
     {
         return $this->html();
     }

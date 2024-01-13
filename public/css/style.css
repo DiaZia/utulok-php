@@ -17,7 +17,7 @@ body {
 }
 
 .header {
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .navbar ul {
@@ -25,12 +25,17 @@ body {
     list-style-position: inside;
     list-style-type: none;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 0 0 0;
 }
 
 .navbar-toggler {
+    align-content: start;
+    width: 100px;
     margin-top: 10px;
+    max-width: 100px;
+    background-color: black;
 }
+
 
 .header .title {
     text-align: left;
@@ -44,6 +49,19 @@ body {
     display: block;
 }
 
+.logClass {
+    margin-top: -10px;
+    max-width: 100px;
+    min-width: 100px;
+}
+
+.log {
+    text-align: left;
+    font-size: 14px;
+    color: black;
+}
+
+
 @media (max-width: 767px) {
     .header .title {
         font-size: 36px;
@@ -54,11 +72,9 @@ body {
 @media (max-width: 575px) {
     .header .title {
         width: 100px;
-        margin-top: -30px;
+        margin-top: -25px;
     }
 }
-
-
 
 .mainButtons {
     border: 1px solid black;
@@ -66,7 +82,7 @@ body {
     background-color: #b274f6;
     color: black;
     display: inline-block;
-    width: 180px;
+    width: 160px;
     height: 40px;
     text-align: center;
     font-family: 'Dancing Script', cursive;
@@ -74,7 +90,15 @@ body {
     transition: background-color 0.3s;
     cursor: pointer;
     text-decoration: none;
-    margin-right: 20px;
+    margin-right: 10px;
+}
+
+#onas {
+    width: 90px;
+}
+
+#adopcie {
+    width: 140px;
 }
 
 .mainButtons:active {
@@ -125,7 +149,7 @@ aside {
 .information {
     font-family: Arial, sans-serif;
     font-size: 18px;
-    padding: 80px;
+    padding: 40px 80px;
     margin: 0;
 }
 
@@ -138,7 +162,6 @@ aside {
     padding: 20px 0;
     min-height: 70px;
 }
-
 
 .grid {
     display: grid;

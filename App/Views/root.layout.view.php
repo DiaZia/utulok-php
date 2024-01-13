@@ -21,36 +21,32 @@
 <body>
 <nav class="navbar navbar-expand-lg">
     <div class="row header">
-        <div class="col-6 col-sm-6 col-md-6 col-lg-4"><a class="title" href='<?= $link->url("home.index") ?>'">Útulok Pacička</a></div>
+        <div class="col-5 col-sm-6 col-md-5 col-lg-4"><a class="title" href='<?= $link->url("home.index") ?>'">Útulok Pacička</a></div>
         <div class="col-4 col-sm-4 col-md-4 col-lg-7">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a href="<?= $link->url("home.aboutUs") ?>" class="mainButtons">O nás</a>
+                    <li class="nav-item"><a href="<?= $link->url("home.aboutUs") ?>" class="mainButtons" id="onas">O nás</a>
                     <li class="nav-item"><a href="<?= $link->url("pet.index") ?>" class="mainButtons">Naše zvieratká</a></li>
-                    <li class="nav-item"><a href="#" class="mainButtons">Podporte nás</a></li>
+                    <li class="nav-item"><a href="<?= $link->url("home.support") ?>" class="mainButtons">Podporte nás</a></li>
+                    <?php if ($auth->isLogged()) { ?>
+                        <li class="nav-item"><a href="#" class="mainButtons" id="adopcie">Moje adopcie</a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
         <div class="col-2 col-sm-2 col-md-2 col-lg-1">
-            <?php if ($auth->isLogged()) { ?>
-                <span class="navbar-text">Prihlásený používateľ: <b><?= $auth->getLoggedUserName() ?></b></span>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $link->url("auth.logout") ?>">Odhlásenie</a>
-                    </li>
-                </ul>
-            <?php } else { ?>
-                <img src="public/images/login.jpg" alt="login" class="loginPic" onclick="window.location.href='<?= \App\Config\Configuration::LOGIN_URL ?>'">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a>
-                    </li>
-                </ul>
-            <?php } ?>
-
+            <div class="logClass">
+                <?php if ($auth->isLogged()) { ?>
+                    <span class="log">Prihlásený používateľ: <b><?= $auth->getLoggedUserName() ?></b></span>
+                    <a class="log" href="<?= $link->url("auth.logout") ?>">Odhlásenie</a>
+                <?php } else { ?>
+                    <img src="public/images/login.jpg" alt="login" class="loginPic" onclick="window.location.href='<?= \App\Config\Configuration::LOGIN_URL ?>'">
+                    <a class="log" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </nav>

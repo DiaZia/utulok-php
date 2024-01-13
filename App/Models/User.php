@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class User
+use App\Core\Model;
+
+class User extends Model
 {
     protected ?int $id = null;
     protected ?string $username;

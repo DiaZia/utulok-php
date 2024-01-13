@@ -18,8 +18,14 @@ class Pet extends Model
      * @param $imagePath
      * @param $age
      */
-    public function __construct($name, $type, $imagePath, $age)
-    {
+    public function __construct(
+        ?int $id = null,
+        ?string $name = null,
+        ?string $type = null,
+        ?string $imagePath = null,
+        ?int $age = null
+    ) {
+        $this->id = $id;
         $this->name = $name;
         $this->type = $type;
         $this->imagePath = $imagePath;

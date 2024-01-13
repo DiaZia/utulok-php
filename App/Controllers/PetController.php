@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Helpers\PetsLoader;
+use App\Models\Pet;
+use App\Models\User;
 
 class PetController extends AControllerBase
 {
@@ -14,7 +16,8 @@ class PetController extends AControllerBase
      */
     public function index(): Response
     {
-        $pets = PetsLoader::loadPets("data/pets.csv");
+        PetsLoader::loadPets("data/pets.csv");
+        $pets = Pet::getAll();
         return $this->html(['pets' => $pets]);
     }
     public function create()
