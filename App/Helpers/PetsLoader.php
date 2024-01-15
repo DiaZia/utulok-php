@@ -18,12 +18,10 @@ class PetsLoader
 
         $existingPets = Pet::getAll();
 
-        // Extract existing pet names
         $existingNames = array_map(function ($pet) {
             return $pet->getName();
         }, $existingPets);
 
-        // Iterate through all lines
         foreach ($allLines as $line) {
             $petsData = explode(";", $line);
 
@@ -33,7 +31,6 @@ class PetsLoader
                 $pets[] = $pet;
             }
         }
-
         return $pets;
     }
 }

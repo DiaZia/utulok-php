@@ -46,4 +46,10 @@ interface IAuthenticator
      * @return bool
      */
     public function isLogged(): bool;
+
+    /**
+     * Return, if a user is admin or not
+     * @return bool
+     */
+    public function isAdmin(): bool;
 }

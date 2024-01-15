@@ -74,4 +74,9 @@ class Pet extends Model
     {
         $this->age = $age;
     }
+
+    public static function getOne($id): ?static
+    {
+        return self::getOne($id);
+    }
 }

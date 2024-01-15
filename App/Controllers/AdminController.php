@@ -6,7 +6,7 @@ use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 
 /**
- * Class HomeController
+ * Class AdminController
  * Example class of a controller
  * @package App\Controllers
  */
@@ -19,7 +19,12 @@ class AdminController extends AControllerBase
      */
     public function authorize($action)
     {
-        return $this->app->getAuth()->isLogged();
+        $isAdmin = $this->app->getAuth()->isAdmin();
+
+        // Debugging
+        error_log("Authorization Check for AdminController::$action: " . ($isAdmin ? 'Allowed' : 'Denied'));
+
+        return $isAdmin;
     }
 
     /**

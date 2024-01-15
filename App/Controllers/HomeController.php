@@ -32,15 +32,6 @@ class HomeController extends AControllerBase
     }
 
     /**
-     * Pets home page.
-     * @return \App\Core\Responses\ViewResponse
-     */
-    public function pets(): Response
-    {
-        return $this->html();
-    }
-
-    /**
      * About us page.
      * @return \App\Core\Responses\ViewResponse
      */

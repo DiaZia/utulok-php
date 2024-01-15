@@ -18,7 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user || !password_verify($password, $user['password'])) {
+    if ($username == "admin" && password_verify($password, $user['password'])) {
+        $_SESSION['user'] = $username;
+        header('Location: ?c=admin&a=index');
+        exit();
+    } else if (!$user || !password_verify($password, $user['password'])) {
         $error = "Nesprávne meno alebo heslo.";
     } else {
         $_SESSION['user'] = $username;

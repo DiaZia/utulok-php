@@ -21,7 +21,9 @@
 <body>
 <nav class="navbar navbar-expand-lg">
     <div class="row header">
-        <div class="col-5 col-sm-6 col-md-5 col-lg-4"><a class="title" href='<?= $link->url("home.index") ?>'">Útulok Pacička</a></div>
+        <div class="col-5 col-sm-6 col-md-5 col-lg-4">
+            <a class="title" href='<?php echo $auth->isAdmin() ? $link->url("admin.index") : $link->url("home.index"); ?>'>Útulok Pacička</a>
+        </div>
         <div class="col-4 col-sm-4 col-md-4 col-lg-7">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

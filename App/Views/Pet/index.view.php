@@ -15,8 +15,10 @@ $pets = $data['pets'];
         <?php foreach ($pets as $index => $pet) { ?>
             <div class="pet">
                 <img src="<?php echo $pet->getImagePath() ?>" alt="0"
-                     data-pet-index="<?php echo $index + 1?>" onclick="imageChange(this)">
-                <h3><?php echo $pet->getName() ?></h3>
+                     data-pet-index="<?php echo $index + 1?>"  onmouseover="imageEnlarge(this)">
+                <a href="<?= $link->url("pet.pet", ["id" => $pet->getId()]) ?>">
+                    <h3><?= $pet->getName() ?></h3>
+                </a>
             </div>
         <?php } ?>
 

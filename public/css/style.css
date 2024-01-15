@@ -178,6 +178,11 @@ aside {
     border-radius: 10px;
 }
 
+.enlarged {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-out;
+}
+
 .login {
     color: #7329a4;
     text-align: center;
@@ -288,7 +293,6 @@ aside {
 }
 
 .pet img {
-    cursor: pointer;
     width: 100%;
 }
 
@@ -312,3 +316,55 @@ footer {
     animation: bounce 1s ease;
 }
 
+.pet-carousel-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-content: start;
+}
+
+.pet-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #ccb5e5;
+    border: 1px solid #ccb5e5;
+    border-radius: 5%;
+}
+
+.pet-carousel-image {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    width: 40px;
+    cursor: pointer;
+    background: #ac4fda;
+    outline: none;
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 20%;
+}
+
+.arrow.prev {
+    left: 20px;
+}
+
+.arrow.next {
+    right: 52%;
+}
+
+.pet-details {
+    text-align: center;
+    margin-top: 10px;
+    width: 50%;
+}

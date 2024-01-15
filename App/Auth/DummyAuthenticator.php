@@ -12,8 +12,10 @@ use App\Core\IAuthenticator;
 class DummyAuthenticator implements IAuthenticator
 {
     public const LOGIN = "admin";
-    public const PASSWORD_HASH = '$2y$10$GRA8D27bvZZw8b85CAwRee9NH5nj4CQA6PDFMc90pN9Wi4VAWq3yq'; // admin
-    public const USERNAME = "Admin";
+    //public const PASSWORD_HASH = '$2y$10$GRA8D27bvZZw8b85CAwRee9NH5nj4CQA6PDFMc90pN9Wi4VAWq3yq'; // admin
+    public const PASSWORD_HASH = '$2y$10$lKQHDDMa.PIPFr6J50IfLuep3c9TXXSO/BeFVHFxNaXPu57Cl/Tyq'; //admin123
+
+    public const USERNAME = "admin";
 
     /**
      * DummyAuthenticator constructor
@@ -86,5 +88,10 @@ class DummyAuthenticator implements IAuthenticator
     public function getLoggedUserId(): mixed
     {
         return $_SESSION['user'];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $_SESSION['user'] == self::USERNAME;
     }
 }
