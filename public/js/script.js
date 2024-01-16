@@ -1,3 +1,4 @@
+
 function changeColor(element) {
     var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
     element.style.color = randomColor;
@@ -28,8 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevButton = document.querySelector('.arrow.prev');
     const nextButton = document.querySelector('.arrow.next');
 
-
-
     let currentImageIndex = 0;
     var path = "public/images/pic" + petId + "/obrazok" + petId;
     var images = [path + ".jpg", path + ".1.jpg",
@@ -37,7 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     prevButton.addEventListener('click', function () {
-        currentImageIndex = (currentImageIndex - 1) % images.length;
+        if (currentImageIndex === 0) {
+            currentImageIndex = 3;
+        } else {
+            currentImageIndex = (currentImageIndex - 1) % images.length;
+        }
+
         image.src = images[currentImageIndex];
     });
 
@@ -46,3 +50,21 @@ document.addEventListener('DOMContentLoaded', function () {
         image.src = images[currentImageIndex];
     });
 });
+
+function openForm() {
+    var form = document.getElementById('adoptForm');
+    form.style.display = 'block';
+}
+
+function closeForm() {
+    var form = document.getElementById('adoptForm');
+    form.style.display = 'none';
+}
+
+function showLoginAlert() {
+    alert('Do tejto sekcie sa musíte prihlásiť.');
+}
+
+function adoptedAlert() {
+    alert('Toto zvieratko už máte v adopcií.');
+}

@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $db = \App\Core\DB\Connection::connect();
 
     if (isUsernameTaken($username, $db)) {
-        $error = "Meno je už obsadené.";
+        $error = "Meno je už obsadené!";
     } elseif (isEmailTaken($email, $db)) {
-        $error = "Email je už obsadený.";
+        $error = "Email je už obsadený!";
     } else {
         $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
         $stmt = $db->prepare($sql);
@@ -58,25 +58,25 @@ function isEmailTaken($email, $db)
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
+                    <?php if (isset($error)) : ?>
+                        <p class="error"><?= $error ?></p>
+                    <?php endif; ?>
                     <h2 class="registration login">Registrácia</h2>
                     <form class=loginForm id="registrationForm" method="post"
                           action="<?= $link->url("register") ?>" onsubmit="return validateRegistrationForm()">
                         <label for="meno">Registračné meno:</label>
-                        <input type="text" id="meno" name="meno" required><br><br>
+                        <input type="text" id="meno" name="meno" value="<?= isset($_POST['meno']) ? htmlspecialchars($_POST['meno']) : '' ?>" required><br><br>
 
                         <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required><br><br>
+                        <input type="email" id="email" name="email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" required><br><br>
 
                         <label for="heslo">Heslo:</label>
-                        <input type="password" id="heslo" name="heslo" required><br><br>
+                        <input type="password" id="heslo" name="heslo" value="<?= isset($_POST['heslo']) ? htmlspecialchars($_POST['heslo']) : '' ?>" required><br><br>
 
                         <label for="potvrdit_heslo">Potvrdiť heslo:</label>
-                        <input type="password" id="potvrdit_heslo" name="potvrdit_heslo" required><br><br>
+                        <input type="password" id="potvrdit_heslo" name="potvrdit_heslo" value="<?= isset($_POST['heslo']) ? htmlspecialchars($_POST['heslo']) : '' ?>" required><br><br>
 
                         <input type="submit" value="Registrovať">
-                        <?php if (isset($error)) : ?>
-                            <p class="error"><?= $error ?></p>
-                        <?php endif; ?>
                     </form>
                 </div>
             </div>

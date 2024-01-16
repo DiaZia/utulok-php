@@ -48,4 +48,13 @@ class HomeController extends AControllerBase
     {
         return $this->html();
     }
+
+    /**
+     * My adoption page.
+     * @return \App\Core\Responses\ViewResponse
+     */
+    public function adoption(): Response
+    {
+        return $this->html();
+    }
 }

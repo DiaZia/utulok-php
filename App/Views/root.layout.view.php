@@ -34,7 +34,7 @@
                     <li class="nav-item"><a href="<?= $link->url("pet.index") ?>" class="mainButtons">Naše zvieratká</a></li>
                     <li class="nav-item"><a href="<?= $link->url("home.support") ?>" class="mainButtons">Podporte nás</a></li>
                     <?php if ($auth->isLogged()) { ?>
-                        <li class="nav-item"><a href="#" class="mainButtons" id="adopcie">Moje adopcie</a></li>
+                        <li class="nav-item"><a href="<?= $link->url("home.adoption") ?>" class="mainButtons" id="adopcie">Moje adopcie</a></li>
                     <?php } ?>
                 </ul>
             </div>
