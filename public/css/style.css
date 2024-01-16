@@ -321,29 +321,31 @@ footer {
     display: flex;
     width: 100%;
     align-content: start;
+    min-height: 500px;
 }
 
 .pet-carousel {
     display: flex;
     overflow: hidden;
     width: 50%;
-    margin: 0 auto;
+    height: 350px;
+    margin: 20px auto;
     background-color: #ccb5e5;
     border: 1px solid #ccb5e5;
-    border-radius: 5%;
+    border-radius: 30px;
 }
 
 .pet-carousel-image {
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
-    height: auto;
+    max-width: 450px;
+    max-height: 350px;
     transition: transform 0.3s ease-in-out;
 }
 
 .arrow {
     position: absolute;
-    top: 50%;
+    top: 185px;
     transform: translateY(-50%);
     font-size: 24px;
     width: 40px;
@@ -352,7 +354,7 @@ footer {
     outline: none;
     padding: 0;
     border: 1px solid black;
-    border-radius: 20%;
+    border-radius: 10px;
 }
 
 .arrow.prev {
@@ -363,8 +365,121 @@ footer {
     right: 52%;
 }
 
+.adopt {
+    position: absolute;
+    top: 390px;
+    margin-left: 20px;
+    margin-right: auto;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #b26af5;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
 .pet-details {
     text-align: center;
     margin-top: 10px;
     width: 50%;
+}
+
+.description {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 20px 50px;
+    margin: 0;
+}
+
+.error {
+    color: #d30a0a;
+    margin-top: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    text-align: center;
+}
+
+#adoptForm {
+    position: absolute;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #b274f6;
+    width: 300px;
+    height: 180px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: none;
+}
+
+#adoptForm button[type='submit'] {
+    background-color: #6f13ad;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#adoptForm .close {
+    background-color: #b26af5;
+    font-size: 13px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 250px;
+    height: 23px;
+    margin-bottom: 0;
+}
+
+.petAdoptions {
+    text-align: center;
+    display: flex;
+}
+
+.petAdoptions h3 {
+    font-size: 19px;
+    padding: 3px;
+    width: 200px;
+    height: 35px;
+    margin-top: 1px;
+    cursor: pointer;
+}
+
+.petAdoptions img {
+    width: 40%;
+    height: auto;
+}
+
+.petAdoptions p {
+    padding: 0 0 0 20px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.adoptionsGrid {
+    display: grid;
+    margin: 15px auto;
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    font-size: 20px;
+}
+
+.adoptionsGrid img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+    .adoptionsGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

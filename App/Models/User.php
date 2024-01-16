@@ -16,8 +16,13 @@ class User extends Model
      * @param $email
      * @param $password
      */
-    public function __construct($username, $email, $password)
+    public function __construct(
+        ?int $id = null,
+        ?string $username = null,
+        ?string $email = null,
+        ?string $password = null)
     {
+        $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
@@ -30,7 +35,7 @@ class User extends Model
     }
     public function getUsername(): ?string
     {
-        return $this->name;
+        return $this->username;
     }
 
 
