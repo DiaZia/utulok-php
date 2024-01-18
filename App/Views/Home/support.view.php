@@ -3,7 +3,7 @@
 ?>
 
 <main>
-    <div class="information" id="animatedText">
+    <div class="information col-sm-12 col-md-12" id="animatedText">
         <strong>Možnosti podpory<br><br></strong>
         <ul>
             <li>Finančná podpora<br>Bankový prevod:<br>

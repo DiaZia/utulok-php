@@ -21,11 +21,16 @@ body {
 }
 
 .navbar ul {
-    display: flex;
+    display: contents;
     list-style-position: inside;
     list-style-type: none;
     text-align: center;
     padding: 10px 0 0 0;
+}
+
+.web-content {
+    display: flex;
+    width: 100%;
 }
 
 .navbar-toggler {
@@ -124,25 +129,33 @@ body {
 
 .mainDiv .row {
     display: flex;
-    width: fit-content;
+    width: 100%;
     margin-top: -15px;
 }
 
 aside {
     background-color:  #b26af5;
-    margin-top: -10px;
+    margin-left: auto;
+    margin-right: -12px;
+    margin-top: -16px;
+    max-width: 220px;
+    min-width: 100px;
 }
 
 .asidePanel {
-    display: block;
-    width: 60px;
-    margin: 10px auto 0 auto;
+    display: grid;
+    width: 120px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .asidePanel img {
     width: 60px;
     height: 60px;
     cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 10px;
 }
 
@@ -151,6 +164,11 @@ aside {
     font-size: 18px;
     padding: 40px 80px;
     margin: 0;
+    width: 100%;
+}
+
+.information ul {
+    width: 100%;
 }
 
 .info {
@@ -483,3 +501,29 @@ footer {
         grid-template-columns: repeat(1, 1fr);
     }
 }
+
+.eshop {
+    width: 90px;
+    background-color: #210d2c;
+    color: #dbbefa;
+    font-size: 21px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 15px 15px 5px 15px;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.kosik {
+    width: 60px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
+
+
+
+/* vytvorit eshop, tabulky produkty, kosikt, pet_produkt M:N

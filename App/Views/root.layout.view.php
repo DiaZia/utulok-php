@@ -55,6 +55,16 @@
 <div class="container-fluid mt-3">
     <div class="web-content">
         <?= $contentHTML ?>
+        <aside class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
+            <div class="asidePanel">
+                <a class="eshop" href="<?= $link->url("home.eshop") ?>">E-shop</a>
+                <a href="<?= $link->url("home.cart") ?>" class="kosik">
+                    <img src="public/images/shopping-cart.jpg" alt="kosik">
+                </a>
+                <img src="public/images/facebook.jpg" alt="facebook">
+                <img src="public/images/instagram.jpg" alt="instagram">
+            </div>
+        </aside>
     </div>
 </div>
 <footer>

@@ -68,3 +68,33 @@ function showLoginAlert() {
 function adoptedAlert() {
     alert('Toto zvieratko už máte v adopcií.');
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Function to handle form submission using AJAX
+    function cancelAdoptionAjax(adoptionId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "App/Models/CancelAdoption.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Update the content after successful cancellation
+                var adoptionContainer = document.getElementById("adoption" + adoptionId);
+                adoptionContainer.parentNode.removeChild(adoptionContainer);
+            }
+        };
+
+        xhr.send("cancelAdoption=" + adoptionId);
+    }
+
+    // Attach event listener to all cancel adoption forms
+    var cancelAdoptionForms = document.querySelectorAll(".cancelAdoptionForm");
+    cancelAdoptionForms.forEach(function (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+        var adoptionId = form.querySelector("input[name='cancelAdoption']").value;
+        cancelAdoptionAjax(adoptionId);
+        });
+    });
+});

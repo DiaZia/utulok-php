@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Adoption;
 
 /**
  * Class HomeController
@@ -57,4 +58,23 @@ class HomeController extends AControllerBase
     {
         return $this->html();
     }
+
+    /**
+     * E-shop page.
+     * @return \App\Core\Responses\ViewResponse
+     */
+    public function eshop(): Response
+    {
+        return $this->html();
+    }
+
+    /**
+     * Kosik page.
+     * @return \App\Core\Responses\ViewResponse
+     */
+    public function cart(): Response
+    {
+        return $this->html();
+    }
+
 }

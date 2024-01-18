@@ -19,6 +19,7 @@ $descriptions = PetDescription::getAll();
 $users = User::getAll();
 $name = $auth->getLoggedUserName();
 $adoption = null;
+$adoptions = Adoption::getAll();
 $userId = null;
 
 foreach ($pets as $pet) {
@@ -89,6 +90,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="pet-details">
             <h3><?= $selectedPet->getName(); ?></h3>
             <p style="white-space: pre-line" class="description" onclick=""><?= $description->getDescription(); ?></p>
+            <p>
+                <strong>Virtuálni majitelia:<br></strong>
+            <?php
+            foreach ($adoptions as $index => $adoption) {
+                if ($adoption->getPetId() === $id) {
+                    $adoptionUser = $adoption->getUserId();
+                    foreach ($users as $user) {
+                        if ($user->getId() === $adoptionUser) {
+                            echo $user->getUsername() . "<br>";
+                        }
+                    }
+                }
+            }
+            ?>
+            </p>
         </div>
     </div>
     <script>

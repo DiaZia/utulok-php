@@ -1,6 +1,10 @@
+<?php
+/** @var \App\Core\LinkGenerator $link */
+?>
+
 <main class="mainDiv">
     <div class="row">
-        <div class="content col-sm-10 col-md-10">
+        <div class="content col-sm-12 col-md-12">
             <div id="carouselExampleCaptions" class="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -47,11 +51,5 @@
                 </p>
             </div>
         </div>
-        <aside class="col-sm-2 col-md-2">
-            <div class="asidePanel">
-                <img src="public/images/facebook.jpg" alt="facebook">
-                <img src="public/images/instagram.jpg" alt="instagram">
-            </div>
-        </aside>
     </div>
 </main>

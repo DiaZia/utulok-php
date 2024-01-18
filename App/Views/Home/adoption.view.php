@@ -23,6 +23,25 @@ $pets = Pet::getAll();
 $whereClause = 'userId = :userId';
 $whereParams = ['userId' => $userId];
 $adoptions = Adoption::getAll($whereClause, $whereParams);
+$adoptionIdToCancel = null;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cancelAdoption"])) {
+    $adoptionIdToCancel = $_POST["cancelAdoption"];
+}
+
+if ($adoptionIdToCancel !== null) {
+    /*foreach ($adoptions as $adoption) {
+        if ($adoption->getId() === (int)$adoptionIdToCancel) {
+            $adoption->delete();
+
+            echo "Adoption canceled successfully";
+            exit;
+        }
+    }*/
+
+    $adoptionIdToCancel = null;
+}
+
 
 ?>
 <main>
@@ -34,7 +53,7 @@ $adoptions = Adoption::getAll($whereClause, $whereParams);
         foreach ($pets as $index => $pet) {
             foreach ($adoptions as $adoption) {
                 if ($pet->getId() === $adoption->getPetId()) { ?>
-            <div class="petAdoptions">
+            <div class="petAdoptions" id="adoption<?= $adoption->getId() ?>">
                 <img src="<?php echo $pet->getImagePath() ?>" alt="0"
                      data-pet-index="<?php echo $index + 1?>">
                 <div>
@@ -45,13 +64,16 @@ $adoptions = Adoption::getAll($whereClause, $whereParams);
                         Adoptovaný/á dňa: <?php echo $adoption->getDate() ?> <br>
                         Vek: <?php echo $pet->getAge();
                         if ($pet->getAge() === 1) { ?>
-                            rok.
+                            rok.<br>
                         <?php } else if ($pet->getAge() > 1 && $pet->getAge() < 5) { ?>
-                            roky.
+                            roky.<br>
                         <?php } else { ?>
-                            rokov.
+                            rokov.<br>
                         <?php } ?>
-                        <button onclick="#">Zrušiť adopciu</button>
+                        <form class="cancelAdoptionForm" method="post" action="" onsubmit="return confirm('Chceš ukončiť virtuálnu adopciu tohto zvieratka?');">
+                            <input type="hidden" name="cancelAdoption" value="<?= $adoption->getId() ?>">
+                            <button type="submit">Zrušiť adopciu</button>
+                        </form>
                     </p>
                 </div>
             </div>

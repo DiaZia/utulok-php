@@ -11,7 +11,7 @@ use PDOException;
  * Class Model
  * Abstract class serving as a simple model example, predecessor of all models
  * Allows basic CRUD operations
- * @package App\Core\Storage
+ * @package App\Core
  */
 abstract class Model implements \JsonSerializable
 {
@@ -21,7 +21,7 @@ abstract class Model implements \JsonSerializable
 
     /**
      * Return an array of models from DB
-     * @param string $whereClause Additional where Statement
+     * @param string|null $whereClause Additional where Statement
      * @param array $whereParams Parameters for where
      * @param string|null $orderBy
      * @param int|null $limit
@@ -194,7 +194,7 @@ abstract class Model implements \JsonSerializable
      * Delete current model from DB
      * @throws \Exception If model not exists, throw an exception
      */
-    public function delete()
+    public function delete(): void
     {
         if ($this->{static::getPkColumnName()} == null) {
             return;
@@ -234,4 +234,6 @@ abstract class Model implements \JsonSerializable
     {
         throw new \Exception("Attribute `$name` doesn't exist in the model " . get_called_class() . ".");
     }
+
+
 }

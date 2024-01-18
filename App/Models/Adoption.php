@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Core\Model;
-use Cassandra\Date;
 
 class Adoption extends Model
 {
@@ -29,14 +28,38 @@ class Adoption extends Model
         $this->dateFrom = $dateFrom;
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getPetId(): ?int
     {
         return $this->petId;
     }
 
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
+
     public function getDate(): ?string
     {
         return $this->dateFrom;
+    }
+
+    public static function getOne($id): ?static
+    {
+        $result = parent::getOne($id);
+        if (is_array($result)) {
+            $adoption = new Adoption();
+            foreach ($result as $key => $value) {
+                $adoption->{$key} = $value;
+            }
+
+            return $adoption;
+        }
+        return null;
     }
 
 }
