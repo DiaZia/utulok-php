@@ -69,6 +69,18 @@ function adoptedAlert() {
     alert('Toto zvieratko už máte v adopcií.');
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    var addToCartButton = document.getElementById('cartButton');
+    addToCartButton.addEventListener('click', addToCart);
+});
+
+function addToCart() {
+    console.log('addToCart function called');
+    var quantity = document.getElementById('quantity').value;
+    var form = document.getElementById('addToCartForm');
+    form.querySelector("input[name='quantity']").value = quantity;
+    form.submit();
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     // Function to handle form submission using AJAX
@@ -98,3 +110,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+

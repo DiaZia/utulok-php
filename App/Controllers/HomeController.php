@@ -77,4 +77,13 @@ class HomeController extends AControllerBase
         return $this->html();
     }
 
+    /**
+     * Product page.
+     * @return \App\Core\Responses\ViewResponse
+     */
+    public function product(): Response
+    {
+        return $this->html();
+    }
+
 }

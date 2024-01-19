@@ -17,7 +17,7 @@ $pets = Pet::getAll();
 $description = null;
 $descriptions = PetDescription::getAll();
 $users = User::getAll();
-$name = $auth->getLoggedUserName();
+
 $adoption = null;
 $adoptions = Adoption::getAll();
 $userId = null;
@@ -36,9 +36,12 @@ foreach ($descriptions as $d) {
     }
 }
 
-foreach ($users as $user) {
-    if ($user->getUsername() === $name) {
-        $userId = $user->getId();
+if ($auth->isLogged()) {
+    $name = $auth->getLoggedUserName();
+    foreach ($users as $user) {
+        if ($user->getUsername() === $name) {
+            $userId = $user->getId();
+        }
     }
 }
 

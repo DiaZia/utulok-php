@@ -30,15 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cancelAdoption"])) {
 }
 
 if ($adoptionIdToCancel !== null) {
-    /*foreach ($adoptions as $adoption) {
-        if ($adoption->getId() === (int)$adoptionIdToCancel) {
-            $adoption->delete();
-
-            echo "Adoption canceled successfully";
-            exit;
-        }
-    }*/
-
     $adoptionIdToCancel = null;
 }
 

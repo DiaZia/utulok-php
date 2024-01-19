@@ -58,8 +58,8 @@
         <aside class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
             <div class="asidePanel">
                 <a class="eshop" href="<?= $link->url("home.eshop") ?>">E-shop</a>
-                <a href="<?= $link->url("home.cart") ?>" class="kosik">
-                    <img src="public/images/shopping-cart.jpg" alt="kosik">
+                <a href="<?= $link->url("home.cart") ?>" class="kosik" id="kosik">
+                    <img id="kosikImg" src="public/images/shopping-cart.jpg">
                 </a>
                 <img src="public/images/facebook.jpg" alt="facebook">
                 <img src="public/images/instagram.jpg" alt="instagram">
