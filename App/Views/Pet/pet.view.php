@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="pet-details">
             <h3><?= $selectedPet->getName(); ?></h3>
-            <p style="white-space: pre-line" class="description" onclick=""><?= $description->getDescription(); ?></p>
+            <p style="white-space: pre-line" class="description"><?= $description->getDescription(); ?></p>
             <p>
                 <strong>Virtuálni majitelia:<br></strong>
             <?php

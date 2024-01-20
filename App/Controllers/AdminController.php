@@ -35,4 +35,22 @@ class AdminController extends AControllerBase
     {
         return $this->html();
     }
+
+    /**
+     * Edit page.
+     * @return \App\Core\Responses\Response|\App\Core\Responses\ViewResponse
+     */
+    public function edit(): Response
+    {
+        return $this->html();
+    }
+
+    /**
+     * New pet page.
+     * @return \App\Core\Responses\Response|\App\Core\Responses\ViewResponse
+     */
+    public function newPet(): Response
+    {
+        return $this->html();
+    }
 }

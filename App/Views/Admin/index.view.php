@@ -1,6 +1,11 @@
 <?php
 
-/** @var \App\Core\IAuthenticator $auth */ ?>
+/** @var \App\Core\IAuthenticator $auth */
+/** @var \App\Core\LinkGenerator $link */
+
+use App\Models\Pet;
+
+?>
 
 <main>
     <div class="container-fluid">
@@ -13,23 +18,32 @@
             </div>
         </div>
     </div>
-    <!-- Pet List Page -->
     <div class="container">
-        <h2>Pet List</h2>
-        <ul>
-            <?php $pets = \App\Models\Pet::getAll();
-                foreach ($pets as $pet): ?>
-                <li>
-                    <a href="#">
-                        <?= $pet->getName() ?>
-                    </a>
-                </li>
+        <table class="table" border="1">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $pets = Pet::getAll();
+            foreach ($pets as $pet):
+                ?>
+                <tr>
+                    <td><?= $pet->getName() ?></td>
+                    <td>
+                        <a href="<?= $link->url("admin.edit", ["id" => $pet->getId()]) ?>" class="edit-link" data-pet-id="<?= $pet->getId() ?>">Edit</a>
+                    </td>
+                </tr>
             <?php endforeach; ?>
-        </ul>
+            </tbody>
+        </table>
 
         <?php if ($auth->isAdmin()): ?>
             <div>
-                <a href="#">Add New Pet</a>
+                <a href="<?= $link->url("admin.newPet") ?>" id="addNewPet">Add New Pet</a>
             </div>
         <?php endif; ?>
     </div>

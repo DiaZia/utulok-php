@@ -78,7 +78,13 @@ function addToCart() {
     console.log('addToCart function called');
     var quantity = document.getElementById('quantity').value;
     var form = document.getElementById('addToCartForm');
+    var addInput = document.createElement('input');
+    addInput.type = 'hidden';
+    addInput.name = 'add';
+    addInput.value = 'true';
+    form.appendChild(addInput);
     form.querySelector("input[name='quantity']").value = quantity;
+    form.querySelector("input[name='add']").value = true;
     form.submit();
 }
 
@@ -111,3 +117,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Function to handle form submission using AJAX
+    function deleteProductAjax(productId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "App/Helpers/DeleteProduct.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // Update the content after successful deletion
+                    var productContainer = document.getElementById("cart" + productId);
+                    productContainer.parentNode.removeChild(productContainer);
+
+                    // Optionally, provide feedback to the user
+                    alert("Product deleted successfully!");
+                } else {
+                    // Handle errors
+                    alert("Failed to delete product. Please try again.");
+                }
+            }
+        };
+
+        xhr.send("deleteProduct=" + productId);
+    }
+
+    // Attach event listener to all delete product forms
+    var deleteProductForms = document.querySelectorAll(".deleteProductForm");
+    deleteProductForms.forEach(function (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var productId = form.querySelector("input[name='deleteProduct']").value;
+            deleteProductAjax(productId);
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    var editLinks = document.querySelectorAll(".edit-link");
+    /* editLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            console.log("This will be logged to the console");
+            var petId = link.getAttribute("data-pet-id");
+           window.location.href = "App/Views/Admin/edit.view.php?id=" + petId;
+        }); */
+    });
+
+/*    var addNewPetLink = document.getElementById("addNewPet");
+    if (addNewPetLink) {
+        addNewPetLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            // Redirect or open a form for adding a new pet
+            // Example: window.location.href = "/add-new-pet.php";
+        });
+    }
+}) */

@@ -2,7 +2,7 @@
 use App\Models\Product;
 use App\Models\Cart;
 use \App\Models\User;
-
+use \App\Models\ProductDescription;
 /** @var Product[] $products */
 /** @var \App\Core\IAuthenticator $auth */
 /** @var \App\Core\LinkGenerator $link */
@@ -30,13 +30,21 @@ if ($auth->isLogged()) {
     }
 }
 
+$descriptions = ProductDescription::getAll();
+$productDescription = null;
+foreach ($descriptions as $description) {
+    if ($description->getProductId() === $selectedProduct->getId()) {
+        $productDescription = $description->getDescription();
+    }
+}
+
 $whereClause = 'userId = :userId';
 $whereParams = ['userId' => $userId];
 $carts = Cart::getAll($whereClause, $whereParams);
 $found = false;
 $foundCart = null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add']) && $_POST['add'] === "true") {
     foreach ($carts as $cart) {
         if ($cart->getProductId() === $selectedProduct->getId()) {
             $found = true;
@@ -79,15 +87,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <img src="<?= $selectedProduct->getImagePath(); ?>" alt="productImg">
         <div class="productInfo">
             <h4 class="productProperty"><?= $selectedProduct->getName() ?></h4>
-            <p class="productProperty">Popis produktu: adnksdSFJKBJSBSJBDS JKSjksadhkjasjk
-            jjjjjjjjjjjjj jjsdkfhhhhhhhhhhksf jlekjdkekjkdejkj</p>
+            <p class="productProperty" style="white-space: pre-line">Popis produktu: <br><?= $productDescription ?></p>
             <h4 class="productProperty"><?= $selectedProduct->getPrice() ?>€</h4>
             <form method="post" id="addToCartForm">
                 <label class="productProperty" for="quantity">Množstvo:</label>
                 <input class="productProperty" type="number" id="quantity" name="quantity" min="1" max="10" value="1">
                 <div class="productProperty">
-                    <button id="cartButton" type="button" onclick="<?php echo ($auth->isLogged()) ?  'addToCart()'  :
-                        'showLoginAlert()'; ?>">Pridať do košíka</button>
+                    <button id="cartButton" type="button"  <?php echo ($auth->isLogged()) ? ' onclick="addToCart()"' :
+                        'onclick="showLoginAlert()"'; ?>>Pridať do košíka</button>
                 </div>
             </form>
         </div>

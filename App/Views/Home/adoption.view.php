@@ -29,10 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["cancelAdoption"])) {
     $adoptionIdToCancel = $_POST["cancelAdoption"];
 }
 
-if ($adoptionIdToCancel !== null) {
-    $adoptionIdToCancel = null;
-}
-
 
 ?>
 <main>

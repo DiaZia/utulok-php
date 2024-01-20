@@ -13,6 +13,7 @@
              </li>
             <li>Virtuálna adopcia zvieratka (pravidelné prispievanie).<br> <a href="<?= $link->url("pet.index") ?>">Naše zvieratká</a><br><br></li>
             <li>Darovanie krmiva, hračiek a iných pomôcok priamo u nás v útulku.<br><br></li>
+            <li>Kúpa produktu z nášho <a href="<?= $link->url("home.eshop")?>" >e-shopu.</a><br><br></li>
             <li>Pravidelné venčenie našich psíkov.</li>
         </ul>
     </div>

@@ -140,6 +140,7 @@ aside {
     margin-top: -16px;
     max-width: 220px;
     min-width: 100px;
+    min-height: 80vh;
 }
 
 .asidePanel {
@@ -560,4 +561,101 @@ footer {
 
 .productProperty button:hover {
     background-color: #45a049;
+}
+
+.cart {
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.shoppingCart {
+    width: 60vw;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.shoppingCart .header {
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.shoppingCart ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.shoppingCart li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.shoppingCart img {
+    max-width: 80px;
+    min-width: 30px;
+    max-height: 80px;
+    min-height: 30px;
+}
+
+.shoppingCart span {
+    width: 80px;
+}
+
+.priceClass {
+    width: 25vw;
+    border: 1px solid #ccc;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.priceClass h3 {
+    font-size: 17px;
+}
+
+.priceClass button {
+    background-color: #54d75a;
+    border: none;
+    width: 130px;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.delete {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 20px;
+    border: none;
+    background-color: white;
+}
+
+.delete img {
+    width: 25px;
+    height: 25px;
+}
+
+.table {
+    width: 20vw;
+}
+
+.editPet {
+    display: block;
+    justify-content: space-between;
+    margin-left: 50px;
+    height: 50vh;
+    width: 50vw;
+}
+
+.editPet div {
+    margin-bottom: 50px;
+}
+
+.editPet input {
+    width: 800px;
 }
