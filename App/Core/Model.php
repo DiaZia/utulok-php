@@ -7,6 +7,8 @@ use App\Helpers\Inflect;
 use PDO;
 use PDOException;
 
+
+
 /**
  * Class Model
  * Abstract class serving as a simple model example, predecessor of all models

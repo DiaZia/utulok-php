@@ -6,6 +6,7 @@ use App\Config\Configuration;
 use PDO;
 use PDOException;
 
+
 /**
  * Class Connection
  * Class for Mysql DB (MariaDB) connection

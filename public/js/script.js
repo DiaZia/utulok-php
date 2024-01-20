@@ -92,12 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to handle form submission using AJAX
     function cancelAdoptionAjax(adoptionId) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "App/Models/CancelAdoption.php", true);
+        xhr.open("POST", "App/Helpers/CancelAdoption.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                // Update the content after successful cancellation
                 var adoptionContainer = document.getElementById("adoption" + adoptionId);
                 adoptionContainer.parentNode.removeChild(adoptionContainer);
             }
@@ -106,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.send("cancelAdoption=" + adoptionId);
     }
 
-    // Attach event listener to all cancel adoption forms
     var cancelAdoptionForms = document.querySelectorAll(".cancelAdoptionForm");
     cancelAdoptionForms.forEach(function (form) {
         form.addEventListener("submit", function (event) {
@@ -118,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Function to handle form submission using AJAX
     function deleteProductAjax(productId) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "App/Helpers/DeleteProduct.php", true);
@@ -127,12 +124,9 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    // Update the content after successful deletion
                     var productContainer = document.getElementById("cart" + productId);
                     productContainer.parentNode.removeChild(productContainer);
 
-                    // Optionally, provide feedback to the user
-                    alert("Product deleted successfully!");
                 } else {
                     // Handle errors
                     alert("Failed to delete product. Please try again.");
@@ -141,9 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         xhr.send("deleteProduct=" + productId);
+        updateTotalPrice();
     }
 
-    // Attach event listener to all delete product forms
     var deleteProductForms = document.querySelectorAll(".deleteProductForm");
     deleteProductForms.forEach(function (form) {
         form.addEventListener("submit", function (event) {
@@ -154,23 +148,50 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function updateTotalPrice() {
+    var userId = document.querySelector(".cart").getAttribute("data-cart-userId");
+    var xhr = new XMLHttpRequest()
+    xhr.open("POST", "App/Helpers/CalculatePrice.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var totalPriceElement = document.getElementById("totalPrice");
+            var responseJson = JSON.parse(xhr.responseText);
+            var totalPrice = responseJson.totalPrice.toFixed(2); ;
+            totalPriceElement.innerHTML = 'Cena spolu: ' + totalPrice + ' €';
+        }
+    };
+
+    xhr.send("userId=" + userId);
+}
 document.addEventListener("DOMContentLoaded", function () {
-    var editLinks = document.querySelectorAll(".edit-link");
-    /* editLinks.forEach(function (link) {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-            console.log("This will be logged to the console");
-            var petId = link.getAttribute("data-pet-id");
-           window.location.href = "App/Views/Admin/edit.view.php?id=" + petId;
-        }); */
+    var quantityInputs = document.querySelectorAll(".quantity-input");
+
+    quantityInputs.forEach(function (input) {
+        input.addEventListener("change", function () {
+            var cartId = input.getAttribute("data-cart-id");
+            var newQuantity = input.value;
+            updateQuantity(cartId, newQuantity);
+            updateTotalPrice();
+        });
     });
 
-/*    var addNewPetLink = document.getElementById("addNewPet");
-    if (addNewPetLink) {
-        addNewPetLink.addEventListener("click", function (event) {
-            event.preventDefault();
-            // Redirect or open a form for adding a new pet
-            // Example: window.location.href = "/add-new-pet.php";
-        });
+    function updateQuantity(cartId, newQuantity) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "App/Helpers/ChangeQuantity.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("Quantity updated successfully");
+            } else {
+                console.error("Failed to update quantity");
+            }
+        };
+
+        xhr.send("cartId=" + cartId + "&newQuantity=" + newQuantity);
     }
-}) */
+
+})

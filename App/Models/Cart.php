@@ -49,6 +49,11 @@ class Cart extends Model
         return $this->quantity;
     }
 
+    public function setQuantity($new): void
+    {
+        $this->quantity = $new;
+    }
+
     public function plusQuantity($plus): void
     {
         $this->quantity += $plus;

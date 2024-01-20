@@ -1,26 +1,40 @@
 <?php
+
 use App\Models\Product;
 use App\Models\Cart;
-use \App\Models\User;
+use App\Models\User;
+
+
+require __DIR__ . '/../../../App/Models/Product.php';
+require __DIR__ . '/../../../App/Models/Cart.php';
+require __DIR__ . '/../../../App/Models/User.php';
 
 /** @var \App\Core\IAuthenticator $auth */
+/** @var \App\Core\LinkGenerator $link */
 
 $users = User::getAll();
 $userId = null;
-if ($auth->isLogged()) {
-    $name = $auth->getLoggedUserName();
-    foreach ($users as $user) {
-        if ($user->getUsername() === $name) {
-            $userId = $user->getId();
-        }
+$name = null;
+if ($auth !== null) {
+    if ($auth->isLogged()) {
+        $name = $auth->getLoggedUserName();
     }
+}
 
-    $whereClause = 'userId = :userId';
-    $whereParams = ['userId' => $userId];
-    $carts = Cart::getAll($whereClause, $whereParams);
 
-    $products = Product::getAll();
+foreach ($users as $user) {
+    if ($user->getUsername() === $name) {
+        $userId = $user->getId();
+    }
+}
 
+$whereClause = 'userId = :userId';
+$whereParams = ['userId' => $userId];
+$carts = Cart::getAll($whereClause, $whereParams);
+
+$products = Product::getAll();
+
+function calculateTotalPrice($carts, $products) {
     $totalPrice = 0;
     foreach ($carts as $cart) {
         $productId = $cart->getProductId();
@@ -31,20 +45,20 @@ if ($auth->isLogged()) {
             }
         }
     }
-
-    $productIdToDelete = null;
-
-    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["deleteProduct"])) {
-        $productIdToDelete = $_POST["deleteProduct"];
-    }
-
+    return $totalPrice;
 }
+
+
+$totalPrice = calculateTotalPrice($carts, $products);
+
+$productIdToDelete = null;
+
 
 
 ?>
 
 
-<main class="cart">
+<main class="cart" name="cart" data-cart-userId="<?= $userId?>">
     <?php if ($auth->isLogged()) { ?>
     <div class="shoppingCart">
         <ul>
@@ -69,7 +83,11 @@ if ($auth->isLogged()) {
                     <img src="<?= $selected->getImagePath(); ?>">
                     <span><?= $selected->getName()?> </span>
                     <span><?= $selected->getPrice()?> €</span>
-                    <span><?= $cart->getQuantity()?> ks.</span>
+                    <span>
+                        <input type="number" name="quantity-input" value="<?= $cart->getQuantity() ?>" class="quantity-input" data-cart-id="<?= $cart->getId() ?>">
+                        ks.
+                        <input type="hidden" id="userName" name="name" value="<?= $name ?>">
+                    </span>
                     <form class="deleteProductForm" method="post" action="" onsubmit="return confirm('Chceš odstrániť tento produkt z košíka?');">
                         <input type="hidden" name="deleteProduct" value="<?= $cart->getId() ?>">
                         <button class="delete" type="submit">
@@ -81,7 +99,7 @@ if ($auth->isLogged()) {
         </ul>
     </div>
     <div class="priceClass">
-        <h3><?= 'Cena spolu: ' . number_format($totalPrice, 2) . ' €' ?></h3>
+        <h3 id="totalPrice"><?= 'Cena spolu: ' . number_format($totalPrice, 2) . ' €' ?></h3>
         <button>Objednať</button>
     </div>
     <?php } else { ?>

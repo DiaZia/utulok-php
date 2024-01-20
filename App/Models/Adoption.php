@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Core\Model;
-
 class Adoption extends Model
 {
     protected ?int $id = null;
