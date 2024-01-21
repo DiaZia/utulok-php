@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = password_hash($_POST['heslo'], PASSWORD_DEFAULT);
 
-    $user = new User($username, $email, $password);
+    $user = new User(null, $username, $email, $password);
 
     $db = \App\Core\DB\Connection::connect();
 

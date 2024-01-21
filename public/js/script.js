@@ -169,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
             var cartId = input.getAttribute("data-cart-id");
             var newQuantity = input.value;
             updateQuantity(cartId, newQuantity);
-            updateTotalPrice();
         });
     });
 
@@ -185,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 console.error("Failed to update quantity");
             }
+            updateTotalPrice();
         };
 
         xhr.send("cartId=" + cartId + "&newQuantity=" + newQuantity);
