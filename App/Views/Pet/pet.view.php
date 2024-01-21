@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$existingAdoption) {
         $adoption = new Adoption(null, $userId, $id, date('Y-m-d H:i:s', time()));
         $adoption->save();
-        echo 'Zvieratko úspešne adoptované.';
+        echo '<div style="color: green;">Zvieratko úspešne adoptované</div>';
     }
     $existingAdoption = Adoption::getAll($whereClause, $whereParams);
 }

@@ -457,21 +457,20 @@ footer {
 }
 
 .petAdoptions {
-    text-align: center;
     display: flex;
 }
 
 .petAdoptions h3 {
     font-size: 19px;
-    padding: 3px;
+    padding: 3px 0 0 20px;
     width: 200px;
     height: 35px;
-    margin-top: 1px;
     cursor: pointer;
 }
 
 .petAdoptions img {
-    width: 40%;
+    max-width: 200px;
+    min-width: 80px;
     height: auto;
 }
 
@@ -479,6 +478,14 @@ footer {
     padding: 0 0 0 20px;
     text-align: left;
     font-size: 18px;
+}
+
+.petAdoptions button {
+    margin-left: 20px;
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #a2a2a2;
 }
 
 .adoptionsGrid {
@@ -497,7 +504,7 @@ footer {
     border-radius: 10px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .adoptionsGrid {
         grid-template-columns: repeat(1, 1fr);
     }

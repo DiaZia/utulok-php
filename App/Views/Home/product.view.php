@@ -65,12 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add']) && $_POST['add
         }
         $done = 1;
         $quantity = null;
+        echo '<div style="color: green;">Produkt pridaný do košíka.</div>';
     }
     $carts = Cart::getAll($whereClause, $whereParams);
 
-    $redirectUrl = $link->url("home.product", ["id" => $selectedProduct->getId()]);
-    header("Location: $redirectUrl");
-    exit;
+
 }
 
 ?>

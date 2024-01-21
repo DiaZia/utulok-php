@@ -48,11 +48,7 @@ function calculateTotalPrice($carts, $products) {
     return $totalPrice;
 }
 
-
 $totalPrice = calculateTotalPrice($carts, $products);
-
-$productIdToDelete = null;
-
 
 
 ?>
@@ -80,11 +76,15 @@ $productIdToDelete = null;
 
             ?>
                 <li id="cart<?= $cart->getId() ?>">
-                    <img src="<?= $selected->getImagePath(); ?>">
+                    <span>
+                        <a href="<?= $link->url("home.product", ["id" => $selected->getId()]) ?>">
+                         <img src="<?= $selected->getImagePath(); ?>">
+                        </a>
+                    </span>
                     <span><?= $selected->getName()?> </span>
                     <span><?= $selected->getPrice()?> €</span>
                     <span>
-                        <input type="number" name="quantity-input" value="<?= $cart->getQuantity() ?>" class="quantity-input" data-cart-id="<?= $cart->getId() ?>">
+                        <input type="number" name="quantity-input" value="<?= $cart->getQuantity() ?>" min="1" max="10" class="quantity-input" data-cart-id="<?= $cart->getId() ?>">
                         ks.
                         <input type="hidden" id="userName" name="name" value="<?= $name ?>">
                     </span>
@@ -100,6 +100,7 @@ $productIdToDelete = null;
     </div>
     <div class="priceClass">
         <h3 id="totalPrice"><?= 'Cena spolu: ' . number_format($totalPrice, 2) . ' €' ?></h3>
+
         <button>Objednať</button>
     </div>
     <?php } else { ?>
