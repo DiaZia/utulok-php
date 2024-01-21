@@ -54,7 +54,7 @@ $totalPrice = calculateTotalPrice($carts, $products);
 ?>
 
 
-<main class="cart" name="cart" data-cart-userId="<?= $userId?>">
+<main class="cart" data-cart-userId="<?= $userId?>">
     <?php if ($auth->isLogged()) { ?>
     <div class="shoppingCart">
         <ul>
@@ -100,8 +100,10 @@ $totalPrice = calculateTotalPrice($carts, $products);
     </div>
     <div class="priceClass">
         <h3 id="totalPrice"><?= 'Cena spolu: ' . number_format($totalPrice, 2) . ' €' ?></h3>
-
-        <button>Objednať</button>
+        <form class="orderForm" method="post" action="" onsubmit="return confirm('Chceš odoslať objednávku?');">
+            <input type="hidden" name="userCart" value="<?= $userId ?>">
+            <button type="submit">Objednať</button>
+        </form>
     </div>
     <?php } else { ?>
         <h5>Pre prístup do košíka sa musíte prihlásiť.</h5>

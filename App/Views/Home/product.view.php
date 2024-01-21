@@ -44,7 +44,7 @@ $carts = Cart::getAll($whereClause, $whereParams);
 $found = false;
 $foundCart = null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add']) && $_POST['add'] === "true") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add']) && $_POST['add'] === "true" && $userId !== null) {
     foreach ($carts as $cart) {
         if ($cart->getProductId() === $selectedProduct->getId()) {
             $found = true;

@@ -1,7 +1,6 @@
 
 function changeColor(element) {
-    var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-    element.style.color = randomColor;
+    element.style.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -127,9 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     var productContainer = document.getElementById("cart" + productId);
                     productContainer.parentNode.removeChild(productContainer);
 
-                } else {
-                    // Handle errors
-                    alert("Failed to delete product. Please try again.");
                 }
             }
         };
@@ -158,7 +154,7 @@ function updateTotalPrice() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var totalPriceElement = document.getElementById("totalPrice");
             var responseJson = JSON.parse(xhr.responseText);
-            var totalPrice = responseJson.totalPrice.toFixed(2); ;
+            var totalPrice = responseJson.totalPrice.toFixed(2);
             totalPriceElement.innerHTML = 'Cena spolu: ' + totalPrice + ' €';
         }
     };
@@ -195,3 +191,53 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+    function orderAjax(userId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "App/Helpers/OrderProducts.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        var orderId= null;
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var responseJson = JSON.parse(xhr.responseText);
+                    orderId = responseJson.orderId;
+
+                    if (orderId !== null) {
+                        var xhr2 = new XMLHttpRequest();
+                        xhr2.open("POST", "App/Helpers/DeleteCart.php", true);
+                        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                        xhr2.onreadystatechange = function () {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    var cartElements = document.querySelectorAll("[id^='cart']");
+                                    cartElements.forEach(function (cartElement) {
+                                        cartElement.parentNode.removeChild(cartElement);
+                                    });
+                                    alert("Objednávka úspešne vytvorená.");
+                                    updateTotalPrice();
+                                }
+                            }
+                        };
+                    }
+                    xhr2.send("userId=" + userId + "&orderId=" + orderId);
+                }
+            }
+        };
+
+        xhr.send("userId=" + userId);
+
+    }
+
+    var orderForms = document.querySelectorAll(".orderForm");
+    orderForms.forEach(function (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            var userId = form.querySelector("input[name='userCart']").value;
+            orderAjax(userId);
+        });
+    });
+});
